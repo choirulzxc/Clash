@@ -1,0 +1,274 @@
+mixed-port: 7890
+redir-port: 9797
+tproxy-port: 9898
+allow-lan: true
+mode: rule
+geodata-mode: false
+unified-delay: true
+log-level: silent
+ipv6: false
+external-controller: 0.0.0.0:9090
+external-ui: /data/adb/box/dashboard
+secret: ""
+enable-process: true
+find-process-mode: strict
+#tcp-concurrent: true
+global-client-fingerprint: chrome
+
+# geox-url:
+  # geoip: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat"
+  # geosite: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat"
+  # mmdb: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country.mmdb"
+
+profile:
+  store-selected: true
+  store-fake-ip: true
+
+sniffer:
+  enable: true
+  sniff:
+    TLS:
+      ports: [443, 8443]
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+
+tun:
+enable: false
+stack: system
+auto-route: true
+auto-detect-interface: true
+dns-hijack:
+- any:53
+- tcp://any:53
+device: tun0
+strict-route: false
+inet4-route-exclude-address:
+- 10.0.0.0/8
+- 172.16.0.0/12
+- 192.168.0.0/16
+auto-redirect: true
+include-android-user: [0, 10] 
+# exclude-package: []
+# include-package: []
+
+dns:
+  enable: true
+  listen: 0.0.0.0:1053
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 28.0.0.1/8
+  fake-ip-filter:
+     - "*.lan"
+     - "*.localdomain"
+     - "*.example"
+     - "*.invalid"
+     - "*.localhost"
+     - "*.test"
+     - "*.local"
+     - "*.home.arpa"
+     - time.*.com
+     - time.*.gov
+     - time.*.edu.cn
+     - time.*.apple.com
+     - time1.*.com
+     - time2.*.com
+     - time3.*.com
+     - time4.*.com
+     - time5.*.com
+     - time6.*.com
+     - time7.*.com
+     - ntp.*.com
+     - ntp1.*.com
+     - ntp2.*.com
+     - ntp3.*.com
+     - ntp4.*.com
+     - ntp5.*.com
+     - ntp6.*.com
+     - ntp7.*.com
+     - "*.time.edu.cn"
+     - "*.ntp.org.cn"
+     - "+.pool.ntp.org"
+     - time1.cloud.tencent.com
+     - music.163.com
+     - "*.music.163.com"
+     - "*.126.net"
+     - musicapi.taihe.com
+     - music.taihe.com
+     - songsearch.kugou.com
+     - trackercdn.kugou.com
+     - "*.kuwo.cn"
+     - api-jooxtt.sanook.com
+     - api.joox.com
+     - joox.com
+     - y.qq.com
+     - "*.y.qq.com"
+     - streamoc.music.tc.qq.com
+     - mobileoc.music.tc.qq.com
+     - isure.stream.qqmusic.qq.com
+     - dl.stream.qqmusic.qq.com
+     - aqqmusic.tc.qq.com
+     - amobile.music.tc.qq.com
+     - "*.xiami.com"
+     - "*.music.migu.cn"
+     - music.migu.cn
+     - "+.msftconnecttest.com"
+     - "+.msftncsi.com"
+     - msftconnecttest.com
+     - msftncsi.com
+     - localhost.ptlogin2.qq.com
+     - localhost.sec.qq.com
+     - "+.srv.nintendo.net"
+     - "*.n.n.srv.nintendo.net"
+     - "+.stun.playstation.net"
+     - xbox.*.*.microsoft.com
+     - "*.*.xboxlive.com"
+     - xbox.*.microsoft.com
+     - xnotify.xboxlive.com
+     - "+.battlenet.com.cn"
+     - "+.wotgame.cn"
+     - "+.wggames.cn"
+     - "+.wowsgame.cn"
+     - "+.wargaming.net"
+     - proxy.golang.org
+     - stun.*.*
+     - stun.*.*.*
+     - "+.stun.*.*"
+     - "+.stun.*.*.*"
+     - "+.stun.*.*.*.*"
+     - "+.stun.*.*.*.*.*"
+     - heartbeat.belkin.com
+     - "*.linksys.com"
+     - "*.linksyssmartwifi.com"
+     - "*.router.asus.com"
+     - mesu.apple.com
+     - swscan.apple.com
+     - swquery.apple.com
+     - swdownload.apple.com
+     - swcdn.apple.com
+     - swdist.apple.com
+     - lens.l.google.com
+     - stun.l.google.com
+     - "+.nflxvideo.net"
+     - "*.square-enix.com"
+     - "*.finalfantasyxiv.com"
+     - "*.ffxiv.com"
+     - "*.ff14.sdo.com"
+     - ff.dorado.sdo.com
+     - "*.mcdn.bilivideo.cn"
+     - "+.media.dssott.com"
+     - time-ios.apple.com
+     - shark007.net
+  default-nameserver:
+    - 8.8.8.8
+    - 8.8.4.4
+    - 1.1.1.1
+    - 1.0.0.1
+  nameserver:
+    - 8.8.8.8
+    - 1.0.0.1
+    - 8.8.4.4
+  proxy-server-nameserver:
+    - 112.215.198.248 #DNS XL
+    - 112.215.203.247 #DNS XL
+    - 112.215.203.248 #DNS XL
+    - 112.215.203.254 #DNS XL
+    - 112.215.203.246 #DNS XL
+    - 112.215.198.254 #DNS XL
+    - 192.168.112.128 #DNS TELKOMSEL
+    - 192.168.130.30 #DNS TELKOMSEL
+  # nameserver-policy:
+    # "geosite:cn,private":
+      # - https://doh.pub/dns-query
+      # - https://dns.alidns.com/dns-query
+
+proxies:
+proxy-providers:
+  Premium:
+    type: http
+    url: https://raw.githubusercontent.com/choirulzxc/Clash/refs/heads/main/account/clash.yaml
+    path: ./provide/subscription.yaml
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 600
+proxy-groups:
+  - name: 𝐈𝐧𝐭𝐞𝐫𝐧𝐞𝐭
+    type: select
+    proxies:
+      - 𝐋𝐨𝐚𝐝-𝐛𝐚𝐥𝐚𝐧𝐜𝐞
+      - 𝐅𝐚𝐥𝐥𝐛𝐚𝐜𝐤
+      - 𝐒𝐞𝐥𝐞𝐜𝐭𝐨𝐫
+      - 𝐀𝐝𝐛𝐥𝐨𝐜𝐤
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+  - name: 𝐋𝐨𝐚𝐝-𝐛𝐚𝐥𝐚𝐧𝐜𝐞
+    type: load-balance
+    strategy: round-robin
+    disable-udp: false
+    use:
+      - Premium
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+  - name: 𝐅𝐚𝐥𝐥𝐛𝐚𝐜𝐤
+    type: fallback 
+    disable-udp: false
+    use:
+      - Premium
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+  - name: 𝐒𝐞𝐥𝐞𝐜𝐭𝐨𝐫
+    type: select
+    use:
+      - Premium
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+  - name: 𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩
+    type: fallback
+    disable-udp: false
+    use:
+      - Premium
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+  - name: 𝐀𝐝𝐛𝐥𝐨𝐜𝐤
+    type: select
+    disable-udp: false
+    proxies:
+      - DIRECT 
+      - REJECT
+  - name: 𝐓𝐢𝐤𝐭𝐨𝐤
+    type: select 
+    disable-udp: false
+    proxies:
+      - 𝐈𝐧𝐭𝐞𝐫𝐧𝐞𝐭 
+      - REJECT
+    url: http://www.gstatic.com/generate_204
+    interval: 600
+rule-providers:
+  rule_whatsApp:
+    type: http
+    behavior: classical
+    path: "./rule_provider/rule_whatsApp.yaml"
+    url: https://raw.githubusercontent.com/choirulzxc/Clash/refs/heads/main/clashrules/Social_WhatsApp.yaml
+    interval: 900
+  oisd_big:
+    type: http
+    behavior: domain
+    format: text
+    path: "./rule_provider/oisd_big.txt"
+    url: https://raw.githubusercontent.com/choirulzxc/Clash/refs/heads/main/clashrules/oisd_big.txt
+    interval: 900
+  rule_tiktok:
+    type: http
+    behavior: domain 
+    path: "./rule_provider/rule_tiktok.yaml"
+    url: https://raw.githubusercontent.com/choirulzxc/Clash/refs/heads/main/clashrules/rule_tiktok.yaml
+    interval: 900
+rules:
+  - RULE-SET,rule_whatsApp,𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩
+  - RULE-SET,oisd_big,𝐀𝐝𝐛𝐥𝐨𝐜𝐤
+  - RULE-SET,rule_tiktok,𝐓𝐢𝐤𝐭𝐨𝐤
+  # - AND,((NETWORK,UDP),(DST-PORT,123)),DIRECT
+  - AND,((NETWORK,UDP),(OR,((DST-PORT,443),(GEOSITE,youtube)))),REJECT
+  # - GEOIP,PRIVATE,DIRECT,no-resolve
+  - MATCH,𝐈𝐧𝐭𝐞𝐫𝐧𝐞𝐭

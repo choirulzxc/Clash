@@ -251,13 +251,6 @@ rule-providers:
     path: "./rule_provider/rule_whatsApp.yaml"
     url: https://raw.githubusercontent.com/choirulzxc/Clash/refs/heads/main/clashrules/Social_WhatsApp.yaml
     interval: 900
-  oisd_big:
-    type: http
-    behavior: domain
-    format: text
-    path: "./rule_provider/oisd_big.txt"
-    url: https://raw.githubusercontent.com/choirulzxc/Clash/refs/heads/main/clashrules/oisd_big.txt
-    interval: 900
   rule_tiktok:
     type: http
     behavior: domain 
@@ -266,7 +259,6 @@ rule-providers:
     interval: 900
 rules:
   - RULE-SET,rule_whatsApp,𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩
-  - RULE-SET,oisd_big,𝐀𝐝𝐛𝐥𝐨𝐜𝐤
   - RULE-SET,rule_tiktok,𝐓𝐢𝐤𝐭𝐨𝐤
   # - AND,((NETWORK,UDP),(DST-PORT,123)),DIRECT
   - AND,((NETWORK,UDP),(OR,((DST-PORT,443),(GEOSITE,youtube)))),REJECT
